@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>404 Found — Team Poster</title>
+    <meta name="description" content="Team 404 Found Poster — RoboCup Junior Rescue Line 2025">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;800&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <canvas id="bg-particles" aria-hidden="true"></canvas>
+    <div class="scanline" aria-hidden="true"></div>
+    <div class="grid-overlay" aria-hidden="true"></div>
+
+    <header class="topbar">
+      <a class="brand" href="index.html#hero">
+        <span class="logo">404</span>
+        <span class="brand-text">Found</span>
+      </a>
+      <nav class="nav">
+        <a href="index.html#team">Team</a>
+        <a href="poster.html">Poster</a>
+        <a href="index.html#robot">Robot</a>
+        <a href="index.html#features">Features</a>
+        <a href="index.html#operations">Field Ops</a>
+        <a href="index.html#autonomous">Autonomous</a>
+        <a href="index.html#innovations">Innovations</a>
+        <a href="index.html#reference">Reference</a>
+      </nav>
+    </header>
+
+    <section class="section section-pad">
+      <h2 class="section-title neon">Team Poster</h2>
+      <p class="section-subtitle">Upload your poster image to display it here</p>
+      <div class="poster-wrap">
+        <div class="poster-frame reveal">
+          <img id="team-poster" alt="Team 404 Found Poster" src="" aria-label="Poster preview">
+          <div class="poster-placeholder">No poster selected</div>
+        </div>
+        <div class="poster-actions">
+          <label for="poster-input" class="file-label">Choose Poster Image</label>
+          <input id="poster-input" type="file" accept="image/*">
+          <small class="hint">Supported: PNG, JPG. Recommended width ≥ 1200px.</small>
+        </div>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        <span>©Rishi Chaudhary - xrishichaudhary.github.io for more info    |</span>
+        <span>2025 Team 404 Found — The Knowledge Habitat Pune    |</span>
+        <span>Built with ❤️ for RoboCup Junior Rescue Line</span>
+      </div>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+  </html>
+

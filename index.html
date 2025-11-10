@@ -1,0 +1,225 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>TKH 404 Found — RoboCup Junior Rescue Line 2025</title>
+    <meta name="description" content="Team 404 Found — The Knowledge Habitat Pune — RoboCup Junior Rescue Line 2025. Cyber-themed presentation website showcasing robot, team, and innovations.">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;800&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <canvas id="bg-particles" aria-hidden="true"></canvas>
+    <div class="scanline" aria-hidden="true"></div>
+    <div class="grid-overlay" aria-hidden="true"></div>
+
+    <header class="topbar">
+      <a class="brand" href="#hero">
+        <span class="logo">404</span>
+        <span class="brand-text">Found</span>
+      </a>
+      <nav class="nav">
+        <a href="#team">Team</a>
+        <a href="poster.html">Poster</a>
+        <a href="#robot">Robot</a>
+        <a href="#features">Features</a>
+        <a href="#operations">Field Ops</a>
+        <a href="#autonomous">Autonomous</a>
+        <a href="#innovations">Innovations</a>
+        <a href="#reference">Reference</a>
+      </nav>
+    </header>
+
+    <main id="hero" class="section hero" data-step="1">
+      <div class="hero-content reveal">
+        <div class="tag">RoboCup Junior Rescue Line 2025</div>
+        <h1 class="glitch" data-text="404 Found">404 Found</h1>
+        <p class="subtitle">The Knowledge Habitat Pune</p>
+        <p class="tagline">Solving Rescue Challenges</p>
+        <div class="badges">
+          <span class="badge">LEGO Spike Prime</span>
+          <span class="badge">Dual Color Sensors</span>
+          <span class="badge">Proximity Sensor</span>
+          <span class="badge">Custom Grabber</span>
+        </div>
+        <a href="#team" class="cta">Explore</a>
+      </div>
+      <div class="hero-visual">
+        <div class="ring ring-1"></div>
+        <div class="ring ring-2"></div>
+        <div class="ring ring-3"></div>
+      </div>
+    </main>
+
+    <section id="team" class="section section-pad" data-step="2">
+      <h2 class="section-title neon">Team 404 Found</h2>
+      <p class="section-subtitle">People, roles, and how we collaborate</p>
+      <div class="team-grid">
+        <div class="card reveal">
+          <div class="card-header">
+            <span class="role">Captain</span>
+            <h3>Rishi Chaudhary</h3>
+          </div>
+          <p>Programming & Logic, Presentations</p>
+        </div>
+        <div class="card reveal">
+          <div class="card-header">
+            <span class="role">Co‑Captain</span>
+            <h3>Eshan Mishra</h3>
+          </div>
+          <p>Building & Design, Presentation Logic</p>
+        </div>
+        <div class="card reveal">
+          <div class="card-header">
+            <span class="role">Research</span>
+            <h3>Anirudh Srivastava</h3>
+          </div>
+          <p>Rules, Design, Logic</p>
+        </div>
+        <div class="card reveal">
+          <div class="card-header">
+            <span class="role">Builder</span>
+            <h3>Pranjal Gupta</h3>
+          </div>
+          <p>External Design, Programming Compatibility, Rules</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="robot" class="section section-pad" data-step="3">
+      <h2 class="section-title neon">Robot Overview</h2>
+      <p class="section-subtitle">Platform, drive, sensors, and mechanism</p>
+      <div class="robot-wrap">
+        <div class="robot-graphic reveal">
+          <svg viewBox="0 0 600 360" class="blueprint" role="img" aria-label="Robot blueprint">
+            <defs>
+              <linearGradient id="neon" x1="0" x2="1">
+                <stop offset="0%" stop-color="#00d8ff"/>
+                <stop offset="100%" stop-color="#5be3ff"/>
+              </linearGradient>
+            </defs>
+            <rect x="140" y="120" width="320" height="120" rx="12" ry="12" fill="none" stroke="url(#neon)" stroke-width="2"/>
+            <circle cx="190" cy="260" r="36" fill="none" stroke="url(#neon)" stroke-width="2"/>
+            <circle cx="450" cy="260" r="36" fill="none" stroke="url(#neon)" stroke-width="2"/>
+            <rect x="245" y="140" width="70" height="40" fill="none" stroke="#00d8ff" stroke-dasharray="4 6"/>
+            <rect x="365" y="140" width="70" height="40" fill="none" stroke="#00d8ff" stroke-dasharray="4 6"/>
+            <rect x="280" y="100" width="40" height="20" fill="none" stroke="#00d8ff" stroke-dasharray="4 6"/>
+            <path d="M320,180 L360,200 L320,220" fill="none" stroke="#00d8ff" />
+            <text x="260" y="95" class="bp-label">Proximity Sensor</text>
+            <text x="230" y="135" class="bp-label">Color Sensor L</text>
+            <text x="350" y="135" class="bp-label">Color Sensor R</text>
+            <text x="175" y="310" class="bp-label">Medium Motor (L)</text>
+            <text x="420" y="310" class="bp-label">Medium Motor (R)</text>
+            <text x="300" y="250" class="bp-label">Spike Prime Hub</text>
+            <text x="355" y="100" class="bp-label">Grabber Motor</text>
+          </svg>
+        </div>
+        <ul class="specs reveal">
+          <li><strong>Platform</strong>: LEGO Education Spike Prime</li>
+          <li><strong>Drive</strong>: 2 Medium Motors (wheels)</li>
+          <li><strong>Sensors</strong>: 2× Color (white boundary tracking), 1× Proximity (obstacles)</li>
+          <li><strong>Mechanism</strong>: Custom grabber (evacuation zone “victim” rescue)</li>
+        </ul>
+      </div>
+    </section>
+
+    <section id="features" class="section section-pad" data-step="4">
+      <h2 class="section-title neon">Technical Features</h2>
+      <div class="features-grid">
+        <div class="feature reveal">
+          <h3>Advanced Line Following</h3>
+          <p>Dual color sensor system for robust acquisition and tracking of the black line with white boundary detection for reliability under lighting changes.</p>
+        </div>
+        <div class="feature reveal">
+          <h3>Obstacle Management</h3>
+          <p>Proximity sensing to detect and avoid dynamic obstacles without losing track of the rescue route.</p>
+        </div>
+        <div class="feature reveal">
+          <h3>Autonomous Navigation</h3>
+          <p>Handles intersections, gaps, inclines, and checkpoints per 2025 rules with state-based logic and recovery behaviors.</p>
+        </div>
+        <div class="feature reveal">
+          <h3>Custom Engineering</h3>
+          <p>Innovative sensor placement and an optimized grabber designed for precise, quick evacuation zone rescues.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="operations" class="section section-pad" data-step="5">
+      <h2 class="section-title neon">Field Operations</h2>
+      <div class="ops-flow reveal">
+        <div class="step">
+          <span class="step-num">01</span>
+          <h4>Line Following</h4>
+          <p>Weighted sensor fusion adjusts motor speeds to center on the line while respecting the white boundary.</p>
+        </div>
+        <div class="step">
+          <span class="step-num">02</span>
+          <h4>Obstacle Avoidance</h4>
+          <p>Proximity threshold triggers bypass behavior, re-acquiring the line after safe clearance.</p>
+        </div>
+        <div class="step">
+          <span class="step-num">03</span>
+          <h4>Rescue Sequence</h4>
+          <p>In evacuation zone, the grabber aligns, secures the “victim,” and transports to the safe area.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="autonomous" class="section section-pad" data-step="6">
+      <h2 class="section-title neon">Autonomous Run</h2>
+      <ol class="algo reveal">
+        <li>Initialize sensors, calibrate light thresholds, and set base motor speed.</li>
+        <li>Follow line using dual-sensor PID with boundary validation.</li>
+        <li>Handle intersections: decide via priority rules, continue tracking.</li>
+        <li>Bridge gaps: predictive search and incremental sweep to re-locate line.</li>
+        <li>Inclines: increase torque and maintain sensor height consistency.</li>
+        <li>Enter evacuation zone, detect target, actuate grabber, deliver to safe zone.</li>
+      </ol>
+      <div class="code-hint">Note: Descriptions align broadly with RCJ Rescue Line 2025 intent; always confirm specifics with official rules.</div>
+    </section>
+
+    <section id="innovations" class="section section-pad" data-step="7">
+      <h2 class="section-title neon">Innovations & Teamwork</h2>
+      <div class="innov-grid">
+        <div class="innov reveal">
+          <h3>Sensor Placement</h3>
+          <p>Custom jigs to maintain optimal standoff and reduce noise from floor textures.</p>
+        </div>
+        <div class="innov reveal">
+          <h3>Grabber Optimization</h3>
+          <p>Balanced geometry for quick capture with minimal drag and reliable release.</p>
+        </div>
+        <div class="innov reveal">
+          <h3>Collaboration</h3>
+          <p>Role-driven sprints: build–test–iterate cycles with shared checklists and demos.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="reference" class="section section-pad" data-step="8">
+      <h2 class="section-title neon">Reference</h2>
+      <p class="reference-text">
+        All robot operations and challenge descriptions are intended to align with
+        RoboCup Junior Rescue Line 2025 rules. Please consult the official rulebook
+        for precise scoring, constraints, and field specifications.
+      </p>
+      <ul class="refs">
+        <li>Official RCJ website: <a target="_blank" rel="noopener" href="https://robocupjunior.org">robocupjunior.org</a></li>
+        <li>Rescue Line rules (2025 edition, when published): <a target="_blank" rel="noopener" href="https://robocupjunior.org/rules">robocupjunior.org/rules</a></li>
+      </ul>
+    </section>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        <span>©Rishi Chaudhary - xrishichaudhary.github.io for more info    |</span>
+        <span>2025 Team 404 Found — The Knowledge Habitat Pune    |</span>
+        <span>Built with ❤️ for RoboCup Junior Rescue Line</span>
+      </div>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>
+
