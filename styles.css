@@ -25,10 +25,12 @@ html, body {
 }
 
 /* Background layers */
-#bg-particles {
+.tool-field {
   position: fixed;
   inset: 0;
   z-index: 0;
+  overflow: hidden;
+  pointer-events: none;
 }
 .scanline {
   pointer-events: none;
@@ -53,6 +55,23 @@ html, body {
   background-size: 40px 40px, 40px 40px;
   z-index: 1;
 }
+.tool-icon {
+  position: absolute;
+  width: 64px;
+  height: 64px;
+  opacity: 0.45;
+  transform-origin: center;
+}
+.tool-icon svg {
+  width: 100%;
+  height: 100%;
+  fill: none;
+  stroke: rgba(91, 227, 255, 0.8);
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  filter: drop-shadow(0 0 8px rgba(0,216,255,0.25));
+}
 
 /* Top bar */
 .topbar {
@@ -62,8 +81,8 @@ html, body {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 12px;
-  padding: 14px 22px;
+  gap: 10px;
+  padding: 12px 24px;
   background: linear-gradient(180deg, rgba(5,7,10,0.9), rgba(5,7,10,0.5));
   border-bottom: 1px solid rgba(0,216,255,0.15);
   backdrop-filter: blur(8px);
@@ -88,17 +107,58 @@ html, body {
 .brand-text {
   font-weight: 600;
 }
+.nav {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 6px;
+}
 .nav a {
   color: var(--muted);
   text-decoration: none;
-  margin: 0 8px;
-  padding: 6px 8px;
+  padding: 6px 9px;
   border-radius: 6px;
+  font-size: 15px;
   transition: color .2s ease, background .2s ease;
 }
 .nav a:hover {
   color: var(--text);
   background: rgba(0,216,255,0.08);
+}
+.nav-progress {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  flex: 1;
+}
+.nav-progress-track {
+  position: relative;
+  --track-width: min(18vw, 200px);
+  width: var(--track-width);
+  height: 8px;
+  border-radius: 999px;
+  background: #020202;
+  overflow: hidden;
+  margin-left: auto;
+}
+.nav-progress-fill {
+  position: absolute;
+  inset: 0;
+  transform-origin: left;
+  transform: scaleX(var(--nav-progress, 0));
+  background: linear-gradient(90deg, var(--neon), var(--accent));
+}
+.nav-progress-robot {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 44px;
+  height: auto;
+  image-rendering: pixelated;
+  filter: drop-shadow(0 0 10px rgba(0,216,255,0.4));
+  transform: translate(calc(var(--nav-progress, 0) * (var(--track-width) - 44px)), -50%) rotate(90deg);
+  transition: transform .2s ease;
+  pointer-events: none;
 }
 .present-btn {
   background: linear-gradient(90deg, var(--neon), var(--neon-2));
@@ -273,18 +333,134 @@ html, body {
   gap: 28px;
   align-items: center;
 }
+.blueprint-wrap {
+  position: relative;
+  border: 1px solid rgba(0,216,255,0.25);
+  border-radius: 18px;
+  padding: 22px;
+  background: radial-gradient(1200px 500px at 50% 50%, rgba(0,216,255,0.08), rgba(0,0,0,0));
+}
 .blueprint {
   width: 100%;
   height: auto;
-  background: radial-gradient(1200px 500px at 50% 50%, rgba(0,216,255,0.06), rgba(0,0,0,0));
-  border: 1px solid rgba(0,216,255,0.18);
-  border-radius: 16px;
-  padding: 18px;
+  display: block;
 }
-.bp-label {
-  fill: var(--neon-2);
-  font-size: 10px;
-  opacity: 0.75;
+.bp-frame {
+  fill: rgba(0, 216, 255, 0.08);
+  stroke: url(#neon);
+  stroke-width: 2;
+}
+.bp-shape {
+  fill: rgba(0, 216, 255, 0.12);
+  stroke: rgba(91, 227, 255, 0.8);
+  stroke-width: 2;
+  transition: fill .2s ease, stroke-width .2s ease;
+  cursor: pointer;
+  outline: none;
+  touch-action: manipulation;
+}
+.bp-shape:focus-visible {
+  stroke: var(--accent);
+  stroke-width: 3;
+}
+.bp-shape.is-active,
+.bp-shape:hover {
+  fill: rgba(0, 255, 166, 0.25);
+  stroke-width: 3;
+}
+.bp-wheel {
+  fill: rgba(0, 216, 255, 0.05);
+  stroke-dasharray: 6 4;
+}
+.bp-grabber {
+  fill: none;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.bp-sensor {
+  stroke-dasharray: 4 3;
+}
+.bp-ultra {
+  stroke-dasharray: 2 4;
+}
+.bp-tooltip {
+  margin-top: 16px;
+  padding: 14px 16px;
+  border-radius: 12px;
+  background: rgba(0, 216, 255, 0.08);
+  border: 1px solid rgba(0, 216, 255, 0.22);
+  box-shadow: var(--shadow);
+  min-height: 90px;
+}
+.bp-tooltip-title {
+  display: block;
+  font-family: Orbitron, Inter, sans-serif;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--accent);
+  font-size: 13px;
+}
+.bp-tooltip p {
+  margin: 8px 0 0;
+  color: var(--text);
+  font-size: 14px;
+}
+
+/* Cursor trail (desktop) */
+.cursor-trail {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 7;
+  opacity: 0;
+  transition: opacity .25s ease;
+}
+.cursor-trail.is-active {
+  opacity: 1;
+}
+.cursor-trail-dot {
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(91,227,255,0.9) 0%, rgba(0,216,255,0.2) 60%, rgba(0,216,255,0) 100%);
+  filter: blur(0.8px);
+  mix-blend-mode: screen;
+  opacity: 0;
+  transform: translate(-50%, -50%);
+  transition: opacity .2s ease;
+}
+
+@media (max-width: 900px) {
+  .blueprint-wrap {
+    padding: 18px;
+  }
+  .scroll-guide {
+    display: none;
+  }
+  .bp-tooltip {
+    margin-top: 12px;
+    padding: 12px 14px;
+  }
+}
+@media (max-width: 640px) {
+  .blueprint-wrap {
+    padding: 14px;
+  }
+  .blueprint {
+    min-height: 280px;
+  }
+  .bp-tooltip {
+    margin-top: 10px;
+    min-height: unset;
+  }
+  .bp-tooltip-title {
+    font-size: 12px;
+  }
+  .bp-tooltip p {
+    font-size: 13px;
+    line-height: 1.5;
+  }
 }
 .specs {
   list-style: none;
