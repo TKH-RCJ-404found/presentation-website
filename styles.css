@@ -133,13 +133,15 @@ html, body {
 }
 .nav-progress-track {
   position: relative;
-  --track-width: min(18vw, 200px);
+  --track-width: min(20vw, 240px);
+  --robot-width: min(16vw, 100px);
   width: var(--track-width);
   height: 8px;
   border-radius: 999px;
   background: #020202;
-  overflow: hidden;
+  overflow: visible;
   margin-left: auto;
+  z-index: 1;
 }
 .nav-progress-fill {
   position: absolute;
@@ -152,11 +154,17 @@ html, body {
   position: absolute;
   top: 50%;
   left: 0;
-  width: 44px;
+  width: var(--robot-width);
   height: auto;
   image-rendering: pixelated;
   filter: drop-shadow(0 0 10px rgba(0,216,255,0.4));
-  transform: translate(calc(var(--nav-progress, 0) * (var(--track-width) - 44px)), -50%) rotate(90deg);
+  z-index: 2;
+  transform: translate(
+      calc(var(--nav-progress, 0) * (var(--track-width) - var(--robot-width))),
+      -48%
+    )
+    rotate(90deg)
+    scaleY(0.85);
   transition: transform .2s ease;
   pointer-events: none;
 }
