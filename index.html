@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="styles.css">
   </head>
   <body>
-    <canvas id="bg-particles" aria-hidden="true"></canvas>
+    <div class="tool-field" aria-hidden="true"></div>
     <div class="scanline" aria-hidden="true"></div>
     <div class="grid-overlay" aria-hidden="true"></div>
 
@@ -29,6 +29,12 @@
         <a href="#innovations">Innovations</a>
         <a href="#reference">Reference</a>
       </nav>
+      <div class="nav-progress" aria-hidden="true">
+        <div class="nav-progress-track">
+          <div class="nav-progress-fill"></div>
+          <img src="assets/robot.png" alt="" class="nav-progress-robot" loading="lazy">
+        </div>
+      </div>
     </header>
 
     <main id="hero" class="section hero" data-step="1">
@@ -38,9 +44,9 @@
         <p class="subtitle">The Knowledge Habitat Pune</p>
         <p class="tagline">Solving Rescue Challenges</p>
         <div class="badges">
-          <span class="badge">LEGO Spike Prime</span>
+          <span class="badge">LEGO Mindstorms EV3</span>
           <span class="badge">Dual Color Sensors</span>
-          <span class="badge">Proximity Sensor</span>
+          <span class="badge">Pixy2 Vision Cam</span>
           <span class="badge">Custom Grabber</span>
         </div>
         <a href="#team" class="cta">Explore</a>
@@ -92,34 +98,51 @@
       <p class="section-subtitle">Platform, drive, sensors, and mechanism</p>
       <div class="robot-wrap">
         <div class="robot-graphic reveal">
-          <svg viewBox="0 0 600 360" class="blueprint" role="img" aria-label="Robot blueprint">
-            <defs>
-              <linearGradient id="neon" x1="0" x2="1">
-                <stop offset="0%" stop-color="#00d8ff"/>
-                <stop offset="100%" stop-color="#5be3ff"/>
-              </linearGradient>
-            </defs>
-            <rect x="140" y="120" width="320" height="120" rx="12" ry="12" fill="none" stroke="url(#neon)" stroke-width="2"/>
-            <circle cx="190" cy="260" r="36" fill="none" stroke="url(#neon)" stroke-width="2"/>
-            <circle cx="450" cy="260" r="36" fill="none" stroke="url(#neon)" stroke-width="2"/>
-            <rect x="245" y="140" width="70" height="40" fill="none" stroke="#00d8ff" stroke-dasharray="4 6"/>
-            <rect x="365" y="140" width="70" height="40" fill="none" stroke="#00d8ff" stroke-dasharray="4 6"/>
-            <rect x="280" y="100" width="40" height="20" fill="none" stroke="#00d8ff" stroke-dasharray="4 6"/>
-            <path d="M320,180 L360,200 L320,220" fill="none" stroke="#00d8ff" />
-            <text x="260" y="95" class="bp-label">Proximity Sensor</text>
-            <text x="230" y="135" class="bp-label">Color Sensor L</text>
-            <text x="350" y="135" class="bp-label">Color Sensor R</text>
-            <text x="175" y="310" class="bp-label">Medium Motor (L)</text>
-            <text x="420" y="310" class="bp-label">Medium Motor (R)</text>
-            <text x="300" y="250" class="bp-label">Spike Prime Hub</text>
-            <text x="355" y="100" class="bp-label">Grabber Motor</text>
-          </svg>
+          <div class="blueprint-wrap">
+            <svg viewBox="0 0 600 360" class="blueprint" data-blueprint role="img" aria-label="EV3 robot blueprint">
+              <defs>
+                <linearGradient id="neon" x1="0" x2="1">
+                  <stop offset="0%" stop-color="#00d8ff"/>
+                  <stop offset="100%" stop-color="#5be3ff"/>
+                </linearGradient>
+              </defs>
+              <rect x="120" y="110" width="360" height="140" rx="18" ry="18" class="bp-frame"/>
+              <rect x="230" y="140" width="140" height="70" rx="10" ry="10" class="bp-shape"
+                    data-title="EV3 Intelligent Brick"
+                    data-desc="Main controller runs MicroPython state machines that coordinate drive, Pixy2 events, and grabber timing."></rect>
+              <rect x="270" y="80" width="60" height="40" class="bp-shape"
+                    data-title="Pixy2 Vision Mast"
+                    data-desc="Mounted high to see obstacles/victims early. Sends coded blocks to the EV3 for routing decisions."></rect>
+              <rect x="215" y="132" width="40" height="32" class="bp-shape bp-sensor"
+                    data-title="Color Sensor L"
+                    data-desc="Left down-facing color sensor feeds PID loop and validates white boundary."></rect>
+              <rect x="345" y="132" width="40" height="32" class="bp-shape bp-sensor"
+                    data-title="Color Sensor R"
+                    data-desc="Right color sensor pairs with the left sensor for weighted line tracking."></rect>
+              <path d="M305 210 L350 230 L305 250" class="bp-shape bp-grabber"
+                    data-title="Grabber Arm"
+                    data-desc="Medium motor-driven linkage clamps victims and lifts them clear for transport."></path>
+              <circle cx="190" cy="270" r="38" class="bp-shape bp-wheel"
+                      data-title="Drive Motor L"
+                      data-desc="EV3 large motor with grippy tire delivers torque and supports gyro-stabilized movement."></circle>
+              <circle cx="410" cy="270" r="38" class="bp-shape bp-wheel"
+                      data-title="Drive Motor R"
+                      data-desc="Symmetric drive motor enables differential steering with quick corrections."></circle>
+              <rect x="280" y="250" width="40" height="30" class="bp-shape bp-ultra"
+                    data-title="Ultrasonic + Bumper"
+                    data-desc="Ultrasonic sensor verifies Pixy detections; bumper whiskers provide last-resort contact feedback."></rect>
+            </svg>
+            <div class="bp-tooltip" aria-live="polite">
+              <span class="bp-tooltip-title">Hover a component</span>
+              <p>Explore the EV3 robot blueprint to learn how each subsystem supports Rescue Line obstacles.</p>
+            </div>
+          </div>
         </div>
         <ul class="specs reveal">
-          <li><strong>Platform</strong>: LEGO Education Spike Prime</li>
-          <li><strong>Drive</strong>: 2 Medium Motors (wheels)</li>
-          <li><strong>Sensors</strong>: 2× Color (white boundary tracking), 1× Proximity (obstacles)</li>
-          <li><strong>Mechanism</strong>: Custom grabber (evacuation zone “victim” rescue)</li>
+          <li><strong>Platform</strong>: LEGO Mindstorms EV3 (Education edition)</li>
+          <li><strong>Drive</strong>: 2 Large Motors with grippy wheels + gyro leveling</li>
+          <li><strong>Sensors</strong>: Dual color, ultrasonic range, Pixy2 vision cam for obstacle cues</li>
+          <li><strong>Mechanism</strong>: Custom grabber powered by EV3 Medium Motor for victim rescue</li>
         </ul>
       </div>
     </section>
@@ -133,7 +156,7 @@
         </div>
         <div class="feature reveal">
           <h3>Obstacle Management</h3>
-          <p>Proximity sensing to detect and avoid dynamic obstacles without losing track of the rescue route.</p>
+          <p>Pixy2 camera flags obstacles by color/size while the ultrasonic sensor validates range, letting the EV3 reroute smoothly.</p>
         </div>
         <div class="feature reveal">
           <h3>Autonomous Navigation</h3>
@@ -157,7 +180,7 @@
         <div class="step">
           <span class="step-num">02</span>
           <h4>Obstacle Avoidance</h4>
-          <p>Proximity threshold triggers bypass behavior, re-acquiring the line after safe clearance.</p>
+          <p>Pixy2 obstacle cues escalate to ultrasonic confirmation; when range closes, the EV3 executes a bypass arc and re-acquires the line.</p>
         </div>
         <div class="step">
           <span class="step-num">03</span>
@@ -175,9 +198,10 @@
         <li>Handle intersections: decide via priority rules, continue tracking.</li>
         <li>Bridge gaps: predictive search and incremental sweep to re-locate line.</li>
         <li>Inclines: increase torque and maintain sensor height consistency.</li>
+        <li>Pixy2 scans for obstacles/victims; successful detections gate ultrasonic confirmation before maneuvers.</li>
         <li>Enter evacuation zone, detect target, actuate grabber, deliver to safe zone.</li>
       </ol>
-      <div class="code-hint">Note: Descriptions align broadly with RCJ Rescue Line 2025 intent; always confirm specifics with official rules.</div>
+      
     </section>
 
     <section id="innovations" class="section section-pad" data-step="7">
