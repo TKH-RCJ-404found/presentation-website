@@ -111,82 +111,7 @@
       </div>
     </section>
 
-    <section id="robot" class="section section-pad" data-step="3">
-      <h2 class="section-title neon">Robot Overview</h2>
-      <p class="section-subtitle">Platform, drive, sensors, and mechanism</p>
-      <div class="robot-wrap">
-        <div class="robot-graphic reveal">
-          <div class="blueprint-wrap">
-            <svg viewBox="0 0 600 360" class="blueprint" data-blueprint role="img" aria-label="EV3 robot blueprint">
-              <defs>
-                <linearGradient id="neon" x1="0" x2="1">
-                  <stop offset="0%" stop-color="#00d8ff"/>
-                  <stop offset="100%" stop-color="#5be3ff"/>
-                </linearGradient>
-              </defs>
-              <!-- Top-down EV3-style chassis -->
-              <rect x="140" y="120" width="320" height="140" rx="20" ry="20" class="bp-frame"/>
-
-              <!-- EV3 brick body -->
-              <rect x="220" y="135" width="160" height="90" rx="10" ry="10" class="bp-shape"
-                    data-title="EV3 Intelligent Brick"
-                    data-desc="Top-mounted EV3 brick with screen and ports centered over the drive base for balanced weight."></rect>
-              <rect x="235" y="148" width="70" height="20" class="bp-shape"
-                    data-title="Brick Screen"
-                    data-desc="Screen and buttons for debugging sensor values and starting Rescue Line runs."></rect>
-              <rect x="315" y="148" width="50" height="12" class="bp-shape"
-                    data-title="Brick Ports"
-                    data-desc="Input/output ports used for dual color sensors, ultrasonic, drive motors, and grabber."></rect>
-
-              <!-- Line-follow sensor bar at front -->
-              <rect x="210" y="110" width="180" height="16" rx="6" ry="6" class="bp-shape bp-sensor"
-                    data-title="Dual Color Sensor Bar"
-                    data-desc="Two down-facing color sensors on an adjustable bar tuned for black line with white boundary detection."></rect>
-              <circle cx="235" cy="118" r="6" class="bp-shape bp-sensor"
-                      data-title="Color Sensor L"
-                      data-desc="Left color sensor samples line position and boundary transitions for PID control."></circle>
-              <circle cx="365" cy="118" r="6" class="bp-shape bp-sensor"
-                      data-title="Color Sensor R"
-                      data-desc="Right color sensor pairs with the left sensor to keep the robot centered over the route."></circle>
-
-              <!-- Ultrasonic + Pixy mast at front centre -->
-              <rect x="280" y="100" width="40" height="20" class="bp-shape bp-ultra"
-                    data-title="Ultrasonic Sensor"
-                    data-desc="Forward-facing ultrasonic sensor measures obstacle distance to keep the EV3 clear while tracking the line."></rect>
-              <!-- <rect x="290" y="80" width="20" height="18" class="bp-shape"
-                    data-title="Pixy2 Mast"
-                    data-desc="Pixy2 camera mounted above the bumper plane to see obstacles and victims on the Rescue Line field."></rect> -->
-
-              <!-- Drive motors and wheels -->
-              <rect x="170" y="180" width="40" height="60" class="bp-shape bp-wheel"
-                    data-title="Left Drive Motor + Wheel"
-                    data-desc="Left large motor with wheel; geared for smooth turns on smooth Rescue Line tiles."></rect>
-              <rect x="390" y="180" width="40" height="60" class="bp-shape bp-wheel"
-                    data-title="Right Drive Motor + Wheel"
-                    data-desc="Right large motor with wheel for matched differential drive."></rect>
-
-              <!-- Rescue grabber at rear -->
-              <path d="M260 240 L260 280 L280 300 L320 300 L340 280 L340 240" class="bp-shape bp-grabber"
-                    data-title="Rear Grabber Frame"
-                    data-desc="Rear-mounted grabber frame that encloses the victim from both sides for stable evacuation."></path>
-              <path d="M270 246 L270 292 M330 246 L330 292" class="bp-shape bp-grabber"
-                    data-title="Grabber Jaws"
-                    data-desc="Opposing jaws powered by a medium motor to pinch and lift the victim puck inside the frame."></path>
-            </svg>
-            <div class="bp-tooltip" aria-live="polite">
-              <span class="bp-tooltip-title">Hover a component</span>
-              <p>Explore the EV3 robot blueprint to learn how each subsystem supports Rescue Line obstacles.</p>
-            </div>
-          </div>
-        </div>
-        <ul class="specs reveal">
-          <li><strong>Platform</strong>: LEGO Mindstorms EV3 (Education edition)</li>
-          <li><strong>Drive</strong>: 2 Large Motors with grippy wheels + gyro leveling</li>
-          <li><strong>Sensors</strong>: Dual color and ultrasonic range sensors for obstacle cues <!-- , Pixy2 vision cam for obstacle cues --></li>
-          <li><strong>Mechanism</strong>: Custom grabber powered by EV3 Medium Motor for victim rescue</li>
-        </ul>
-      </div>
-    </section>
+   
 
     <section id="operations" class="section section-pad" data-step="4">
       <h2 class="section-title neon">Field Operations</h2>
@@ -233,6 +158,7 @@
     <script src="script.js"></script>
   </body>
 </html>
+
 
 
 
